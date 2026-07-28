@@ -1,6 +1,7 @@
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.env
 .venv/
-output/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+.vscode/
+.idea/
