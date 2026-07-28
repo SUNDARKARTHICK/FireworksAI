@@ -46,3 +46,14 @@ print(script.metadata.title)
 ```bash
 pytest tests/ -v
 ```
+## Milestone 2
+
+Implemented:
+
+- Script data model
+- Markdown file loader
+- Markdown parser
+- Content pipeline
+- Unit tests
+
+Status: ✅ Completed
