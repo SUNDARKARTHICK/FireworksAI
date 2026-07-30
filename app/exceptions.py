@@ -44,3 +44,23 @@ class ValidationError(FireworksAIError):
         Raised when user-supplied or environment-supplied data does
         not satisfy the constraints required by the application.
     """
+
+
+class FileLoadError(FireworksAIError):
+    """Raised when a source file cannot be safely loaded from disk.
+
+    Examples:
+        Raised when a Markdown file does not exist, is not a regular
+        file, or cannot be read due to an OS-level error (e.g.
+        permissions, encoding).
+    """
+
+
+class MarkdownParsingError(FireworksAIError):
+    """Raised when Markdown content cannot be parsed into a Script.
+
+    Examples:
+        Raised when YAML front matter is missing or invalid, when
+        required metadata fields are absent, or when the expected
+        introduction/section/conclusion structure is not present.
+    """
