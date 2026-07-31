@@ -64,3 +64,40 @@ class MarkdownParsingError(FireworksAIError):
         required metadata fields are absent, or when the expected
         introduction/section/conclusion structure is not present.
     """
+
+
+class TTSGenerationError(FireworksAIError):
+    """Raised when text-to-speech audio synthesis fails.
+
+    Examples:
+        Raised when the text or voice supplied to a
+        :class:`~app.services.tts_service.TTSEngine` implementation is
+        invalid, when the underlying TTS provider raises an error, or
+        when no audio data is returned by the provider.
+    """
+
+
+class AudioWriteError(FireworksAIError):
+    """Raised when audio bytes cannot be safely written to disk.
+
+    Examples:
+        Raised when the output directory cannot be created, when the
+        supplied filename is unsafe (e.g. contains path separators or
+        parent-directory references), when the audio bytes are empty,
+        or when the underlying write operation fails due to an
+        OS-level error.
+    """
+
+
+
+class AudioWriteError(FireworksAIError):
+    """Raised when synthesized audio data cannot be written to disk.
+
+    Examples:
+        Raised when the output directory cannot be created, when
+        audio bytes are empty, when the target filename is invalid,
+        or when the underlying file write fails (e.g. due to
+        permissions or disk errors).
+    """
+
+
