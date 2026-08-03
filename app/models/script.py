@@ -25,20 +25,25 @@ class Section:
 class Metadata:
     """Descriptive metadata about a lesson, sourced from front matter.
 
+    Backwards-compatible: accepts an optional `date` field used in some
+    older tests and fixtures.
+
     Attributes:
         title: The lesson's title.
         author: The lesson's author.
         language: The language the lesson is written in.
         category: The subject or topic category of the lesson.
         duration: The estimated duration of the lesson (e.g. "10 min").
+        date: Optional publication/date string (backwards compatibility).
         tags: A list of keywords describing the lesson.
     """
 
     title: str
     author: str
-    language: str
-    category: str
-    duration: str
+    language: str = "en"
+    category: str = ""
+    duration: str = ""
+    date: str | None = None
     tags: list[str] = field(default_factory=list)
 
 

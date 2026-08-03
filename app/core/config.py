@@ -14,12 +14,18 @@ from typing import Final
 
 @dataclass(frozen=True)
 class Settings:
-    """Application configuration values loaded from environment variables."""
+    """Application configuration values loaded from environment variables.
+
+    Notes:
+        - output_dir and assets_dir are explicit to support Milestone 4
+          video pipeline behaviour.
+    """
 
     project_name: str
     app_env: str
     log_level: str
     output_dir: Path
+    assets_dir: Path
 
 
 def load_settings() -> Settings:
@@ -32,11 +38,18 @@ def load_settings() -> Settings:
 
     project_root = Path(__file__).resolve().parent.parent.parent
 
+    output_dir = Path(
+        os.getenv("FIREWORKSAI_OUTPUT_DIR", str(project_root / "output"))
+    ).expanduser().resolve()
+
+    assets_dir = Path(
+        os.getenv("FIREWORKSAI_ASSETS_DIR", str(project_root / "assets"))
+    ).expanduser().resolve()
+
     return Settings(
         project_name=os.getenv("FIREWORKSAI_PROJECT_NAME", "FireworksAI"),
         app_env=os.getenv("FIREWORKSAI_ENV", "development"),
         log_level=os.getenv("FIREWORKSAI_LOG_LEVEL", "INFO"),
-        output_dir=Path(
-            os.getenv("FIREWORKSAI_OUTPUT_DIR", str(project_root / "output"))
-        ).expanduser().resolve(),
+        output_dir=output_dir,
+        assets_dir=assets_dir,
     )
